@@ -18,9 +18,17 @@ export interface Message {
     date?: string;
 }
 
-export const fetchMessages = (channelName: string, params = {}, cancelToken: CancelToken = null): Promise<AxiosResponse<{messages: Message[] }>> => {
+export const fetchMessages = (channelName: string, params = {}, cancelToken: CancelToken = null):
+Promise<AxiosResponse<{messages: Message[] }>> => {
     return instance.get(`/channels/${channelName}/messages`, {
         params,
+        cancelToken
+    });
+};
+
+export const postMessage = (channelName: string, payload: Message, cancelToken: CancelToken = null) :
+Promise<AxiosResponse<Message>> => {
+    return instance.post(`/channels/${channelName}/message`, payload, {
         cancelToken
     });
 };
