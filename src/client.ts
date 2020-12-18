@@ -28,7 +28,7 @@ Promise<AxiosResponse<{messages: Message[] }>> => {
 
 export const postMessage = (channelName: string, payload: Message, cancelToken: CancelToken = null) :
 Promise<AxiosResponse<Message>> => {
-    return instance.post(`/channels/${channelName}/message`, payload, {
+    return instance.post(`/channels/${channelName}/messages`, payload, {
         cancelToken
     });
 };
